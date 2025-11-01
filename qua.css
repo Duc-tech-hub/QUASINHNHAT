@@ -1,0 +1,87 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  height: 100vh;
+  display: flex;
+  justify-content: center; /* căn giữa toàn trang */
+  align-items: center;
+  background-color: #f4f4f4;
+}
+
+/* Bố cục chính: img1 trên, hàng dưới (2 ảnh + nút) ở giữa */
+.container {
+  display: flex;
+  flex-direction: column;  /* xếp theo cột */
+  align-items: center;     /* căn giữa ngang */
+  gap: 50px;
+}
+
+/* Hàng dưới */
+.bottom-row {
+  display: flex;
+  justify-content: center; /* căn giữa ngang */
+  align-items: center;
+  gap: 80px; /* khoảng cách giữa các phần tử */
+}
+
+/* Ảnh trên */
+.img1 {
+  width: 150px;
+  height: auto;
+}
+
+/* Hai ảnh 2 bên */
+.img2, .img3 {
+  width: 200px;
+  height: auto;
+  transition: transform 0.3s ease;
+}
+
+/* Nút trung tâm – tự co giãn */
+#b {
+  padding: 20px 40px; /* tạo kích thước cơ bản */
+  min-width: 130px;
+  min-height: 70px;
+  background-color: greenyellow;
+  border: 1px solid black;
+  border-radius: 10px;
+  font-weight: bold;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+    transition: all 0.5s ease;
+}
+
+/* Khi hover nút – to ra tự nhiên */
+#b:hover {
+  transform: scale(1.1);
+  transition: all 0.5s ease;
+  background-color: limegreen;
+  color: white;
+}
+
+/* (tùy chọn) Khi nút to ra, 2 ảnh hơi nghiêng nhìn sinh động */
+.bottom-row:hover .img2 {
+  transform: rotate(-3deg);
+  overflow: visible;
+}
+.bottom-row:hover .img3 {
+  transform: rotate(3deg);
+}
+.bottom-row.active .img2 {
+  transform: translateX(-5px) scale(0.9); /* dịch trái và hơi nhỏ lại */
+}
+.bottom-row.active .img3 {
+  transform: translateX(5px) scale(0.9);  /* dịch phải và hơi nhỏ lại */
+}
+/* Responsive – khi màn hình nhỏ, tự xuống hàng */
+@media (max-width: 700px) {
+  .bottom-row {
+    flex-direction: column;
+    gap: 40px;
+  }
+}
